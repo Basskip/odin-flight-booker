@@ -1,0 +1,15 @@
+<h1>Search for Flights</h1>
+
+<%= form_with scope: :search, url: flights_path, method: :get, local: true do |form| %>
+    <%= form.label :origin, "FROM" %>
+    <%= form.select(:origin, options_from_collection_for_select(Airport.all, :id, :code)) %>
+    <%= form.label :destination, "TO" %>
+    <%= form.select(:destination, options_from_collection_for_select(Airport.all, :id, :code)) %>
+    <%= form.label :start, "DATE" %>
+    <%= form.select(:start, options_for_select(@dates)) %>
+    <%= form.label :passenger_count, "# OF PASSENGERS" %>
+    <%= form.select(:passenger_count, options_for_select([["1",1],["2",2],["3",3],["4",4]])) %>
+    <%= form.submit "Search" %>
+<% end %>
+
+<%= render "search_results" if @flights %>

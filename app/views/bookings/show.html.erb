@@ -1,0 +1,13 @@
+<h1>Booking Information</h1>
+
+<h2>Selected Flight</h2>
+    <%= "From: #{@booking.flight.origin.code} "%>
+    <%= "To: #{@booking.flight.destination.code} "%>
+    <%= "Departing: #{@booking.flight.start} "%>
+
+<h2>Passenger Information</h2>
+
+<% @booking.passengers.each do |passenger| %>
+    <%= "Name: #{passenger.name}" %>
+    <%= "Email: #{passenger.email}" %>
+<% end %>

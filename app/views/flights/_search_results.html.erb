@@ -1,0 +1,15 @@
+<h1>Search Results</h1>
+
+<%= form_with scope: :booking, url: new_booking_url, method: :get, local: :true do |form| %>
+    <ul style="list-style: none;">
+    <% @flights.each do |flight| %>
+        <li>
+        <%= form.label :flight, "Departing Airport: #{flight.origin.code} Arriving Airport: #{flight.destination.code} Start: #{flight.start}" %>
+        <%= form.radio_button :flight, flight.id %>
+        </li>
+    <% end %>
+    </ul>
+    <br>
+    <%= form.hidden_field :passenger_count, value: @passenger_count %>
+    <%= form.submit "Proceed to booking" %>
+<% end %>
